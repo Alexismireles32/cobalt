@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: cobalt-api
+    runtime: node
+    region: oregon
+    plan: free
+    buildCommand: cd api && pnpm install && pnpm build
+    startCommand: cd api && pnpm start
+    envVars:
+      - key: API_PORT
+        value: 10000
+      - key: NODE_ENV
+        value: production
+      - key: API_URL
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: CORS_WILDCARD
+        value: 1
